@@ -1,6 +1,6 @@
 {
   "name": "pdfmerger",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Uses the Pdfbox library to merge PDF files into a single PDF file.",
   "main": "./distribution/index.js",
   "engines": {
