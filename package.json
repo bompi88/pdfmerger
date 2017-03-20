@@ -1,0 +1,39 @@
+{
+  "name": "pdfmerger",
+  "version": "0.1.0",
+  "description": "Uses the Pdfbox library to merge PDF files into a single PDF file.",
+  "main": "./distribution/index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "node test.js",
+    "build": "babel source --presets babel-preset-es2015 --out-dir distribution",
+    "prepublish": "npm run build",
+    "setup": "cd source/pdfmerger && mvn clean install",
+    "jar": "cd source/pdfmerger && mvn clean compile package"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bompi88/pdfmerger.git"
+  },
+  "keywords": [
+    "pdf",
+    "merge",
+    "combine",
+    "pdfbox"
+  ],
+  "author": "Bjørn Bråthen (https://www.github.com/bompi88)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/bompi88/pdfmerger/issues"
+  },
+  "homepage": "https://github.com/bompi88/pdfmerger#readme",
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
+    "testing": "^1.1.1",
+    "mkdirp": "^0.5.1",
+    "trash": "^4.0.1"
+  }
+}
