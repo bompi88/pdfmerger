@@ -14,7 +14,7 @@ class ChildStream extends Readable {
     });
 
     childProcess.stderr.on('data', (data) => {
-      self.emit('error', String(data));
+      self.emit('error', data.toString('utf8'));
     });
 
     childProcess.on('close', (code) => {
@@ -81,7 +81,7 @@ module.exports = function(src, dest, callback) {
       e++;
       child.kill('SIGINT');
       // TODO: better error handling/messages
-      callback && callback(new Error(String(data)));
+      callback && callback(new Error(data.toString('utf8')));
     });
 
     child.on('close', (code) => {
