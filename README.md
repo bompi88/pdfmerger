@@ -32,6 +32,13 @@ pdfmerger(pdfs, '/path/to/combined.pdf');
 
 pdfmerger('/path/to/directory', '/path/to/combined.pdf');
 
+// set max java heap limit and initial heap size in megabytes
+
+pdfmerger('/path/to/directory', '/path/to/combined.pdf', {
+  maxHeap: 512,
+  minHeap: 32
+});
+
 // Stream events
 
 pdfStream.on('data', function(data) {

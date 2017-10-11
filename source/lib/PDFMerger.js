@@ -33,7 +33,7 @@ class ChildStream extends Readable {
   }
 }
 
-module.exports = function(src, dest, callback) {
+module.exports = function(src, dest, options, callback) {
 
   if (!(Array.isArray(src) || typeof src === 'string')) {
     throw new Error('First argument should be either a path to a directory or an array of paths to pdf source files')
@@ -42,6 +42,11 @@ module.exports = function(src, dest, callback) {
   if (Array.isArray(src) && src.length < 2) {
     throw new Error('There must be at least 2 paths in the source array');
   }
+
+  const opts = options || {};
+
+  const maxHeap = opts.maxHeap;
+  const minHeap = opts.minHeap;
 
   const dirPathArr = __dirname.split(path.sep);
 
@@ -56,6 +61,14 @@ module.exports = function(src, dest, callback) {
     '-jar',
     jarPath
   ];
+
+  if (maxHeap) {
+    childArgs.unshift('-Xmx' + maxHeap + 'm');
+  }
+
+  if (minHeap) {
+    childArgs.unshift('-Xms' + minHeap + 'm');
+  }
 
   const sources = Array.isArray(src) ? src : [src];
 
